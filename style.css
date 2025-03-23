@@ -10,6 +10,7 @@ body {
 
 /* Centering the main container */
 .container {
+
     background: #fff;
     padding: 20px;
     border-radius: 15px;
@@ -35,11 +36,12 @@ button:hover {
     width: 300px; /* Adjust size */
     border-radius: 50%; /* Round the whole div */
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     overflow: hidden; /* Hide overflow content */
     background-color: #ddd;
     margin-top: 10px !important;
+    padding: 5px;
     margin: 0 auto;
 }
 
@@ -80,4 +82,18 @@ button:hover {
 }
 .back:hover{
     color: red;
+}
+.delete_btn{
+    opacity: 0.5;
+    color: red;
+    cursor: pointer;
+}
+.delete_btn:hover{
+    opacity: 1;
+    color: darkred;
+}
+@media (max-width: 480px) {
+    .container{
+        width: 1000px !important;
+    }
 }

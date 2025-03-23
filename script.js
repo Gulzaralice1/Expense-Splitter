@@ -2,10 +2,10 @@
 let names = [];
 // Persistent object to store expenses per person
 let expensesPerPerson = {};
-
 // Function to add a new name
 function addName() {
     const nameInput = document.querySelector("#nameInputs input");
+    const numberOfPerson = document.getElementById('placeholder');
     const name = nameInput.value.trim();
 
     if (name && !names.includes(name)) {
@@ -18,11 +18,13 @@ function addName() {
         nameList.insertAdjacentHTML(
             "beforeend",
             `<div class="namelist_degine rounded">
-                <img src="image/mn6dbcs15y9zru0yjw45ly54mqsf.png" width="30" height="30">
-                <span>${name}</span>
+                <span><img src="image/mn6dbcs15y9zru0yjw45ly54mqsf.png" width="30" height="30"> ${name}</span>
+                <span"><i class="fa-solid fa-trash delete_btn"></i></span>
             </div>`
         );
-
+        console.log(`Nnumber of person ${names.length}`);
+        // let name_count = 
+        numberOfPerson.placeholder = `Enter name of person ${names.length + 1}`;
         // Update dropdown with new name
         const personSelect = document.getElementById("personSelect");
         const option = document.createElement("option");
@@ -75,7 +77,7 @@ function addExpense() {
     expensesItem.textContent = `${selectedPerson} spent $${amount.toFixed(2)}`;
 
     // Add the expense to the list
-    expenseslist.appendChild(expensesItem);
+    expenseslist.appendChild(expensesItem );
 
     // Clear the input field after adding expense
     document.getElementById("expenseAmount").value = "";
