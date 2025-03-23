@@ -1,0 +1,83 @@
+/* General body styling */
+body {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #f4f4f4; /* Optional background color */
+}
+
+/* Centering the main container */
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 400px;
+}
+
+/* Heading style */
+h2 {
+    color: #333;
+}
+
+/* Button hover effect */
+button {
+    transition: 0.3s ease;
+}
+button:hover {
+    transform: scale(1.05);
+}
+
+/* The div styling to make it a centered circle */
+.namelist_degine {
+    width: 300px; /* Adjust size */
+    border-radius: 50%; /* Round the whole div */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflow content */
+    background-color: #ddd;
+    margin-top: 10px !important;
+    margin: 0 auto;
+}
+
+/* Style for the image inside the circle */
+.namelist_degine img {
+    object-fit: cover; /* Keep the image looking good */
+    border-radius: 50%; /* Ensure the image itself is round */
+}
+
+
+/* Paragraph styling */
+p {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Optional border styling */
+.rounded {
+    border: #333 1px solid;
+}
+
+h2 {
+    color: #333;
+}
+button {
+    transition: 0.3s ease;
+}
+button:hover {
+    transform: scale(1.05);
+}
+#expenses-list {
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: left;
+}
+.back{
+    cursor: pointer;
+}
+.back:hover{
+    color: red;
+}

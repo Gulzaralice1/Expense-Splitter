@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Splitter - Name Setup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" id="firstpage">
+        <i class="fa-solid fa-arrow-right back" title="Next" onclick="goToNextPage()"></i>
+        <h2 class="text-center"><i class="fa-solid fa-user"></i> Enter Names</h2>
+
+        <div id="nameInputs" class="mb-3">
+            <input type="text" class="form-control mb-2" placeholder="Enter name of person 1" id="perso_name">
+            <button class="btn btn-primary w-100 mt-2">Add Another</button>
+            <!-- <div class="namelist_degine rounded">
+                <img src="image/mn6dbcs15y9zru0yjw45ly54mqsf.png" alt="A nice photo" width="30" height="30">
+                <span>farhan</span>
+            </div> -->
+        </div>
+
+        <button class="btn btn-success w-100 mt-3" onclick="goToNextPage()">
+            <i class="fa-solid fa-arrow-right"></i> Next
+        </button>
+    </div>
+
+
+
+    <div class="container" id="orginal">
+        <i class="fa-solid fa-arrow-left text-end back" id="back" title="Back"></i>
+        <h2 class="text-center"><i class="fa-solid fa-coins"></i> Expense Splitter</h2>
+        <div>
+            <input type="number" class="form-control" id="expenseAmount" placeholder="Enter Amount">
+            <select id="personSelect" class="form-control mt-2">
+                <option value="" disabled selected>Select a person</option>
+            </select>
+            <button class="btn btn-secondary w-100 mt-2" onclick="addExpense()">Add Expense</button>
+        </div>
+
+        <div id="expenses-list" class="mt-3 border p-2 rounded bg-light"></div>
+
+        <button class="btn btn-success w-100 mt-3" onclick="calculateExpenses()">
+            <i class="fa-solid fa-check-circle"></i> Calculate
+        </button>
+        <div id="result" class="mt-3 fw-bold text-primary text-center"></div>
+        <!-- <p id="back">back</p> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
