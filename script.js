@@ -1,5 +1,6 @@
 // Array for storing names
 let names = [];
+let deletednames = [];
 // Persistent object to store expenses per person
 let expensesPerPerson = {};
 // Function to add a new name
@@ -19,7 +20,7 @@ function addName() {
             "beforeend",
             `<div class="namelist_degine rounded">
                 <span><img src="image/mn6dbcs15y9zru0yjw45ly54mqsf.png" width="30" height="30"> ${name}</span>
-                <span"><i class="fa-solid fa-trash delete_btn"></i></span>
+                <span"><i class="fa-solid fa-trash delete_btn" onclick="deleteItem(event)"></i></span>
             </div>`
         );
         console.log(`Nnumber of person ${names.length}`);
@@ -31,6 +32,7 @@ function addName() {
         option.value = name;
         option.textContent = name;
         personSelect.appendChild(option);
+
 
         // Initialize expense tracking for this person
         expensesPerPerson[name] = 0;
@@ -104,6 +106,32 @@ function calculateExpenses() {
 function back() {
     document.getElementById("firstpage").style.display = "block";
     document.getElementById("orginal").style.display = "none";
+}
+
+
+
+// delete btn
+function deleteItem(event,option){
+    const numberOfPerson = document.getElementById('placeholder');
+    const button = event.target;  // This gets the clicked icon (trash button)
+    const item = button.closest('.namelist_degine');  // Finds the closest parent with this class
+    item.style.background = 'lightgreen';
+    setInterval(() =>{
+        item.remove();
+        // numberOfPerson.placeholder = `Enter name of person ${names.length - 1}`;
+        // deletednames.push(option);
+        // option.remove();
+    },1000);
+
+    console.log(deletednames);
+    const select = document.getElementById('personSelect');
+    for(let i = 0; i < personSelect.option.length; i++){
+        if(personSelect.option.value[i] === option){
+            option.remove();
+            break;
+        }
+    }
+    
 }
 
 // Hide second page initially
