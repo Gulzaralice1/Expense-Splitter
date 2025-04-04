@@ -2,6 +2,7 @@
 let names = [];
 let deletednames = [];
 let expensesPerPerson = {};
+let grocery = {};
 
 // Function to add a new name
 function addName() {
@@ -18,7 +19,7 @@ function addName() {
         nameList.insertAdjacentHTML(
             "beforeend",
             `<div class="namelist_degine rounded d-flex justify-content-between align-items-center mt-2 p-2 bg-light">
-                <span><img src="image/mn6dbcs15y9zru0yjw45ly54mqsf.png" width="30" height="30"> ${name}</span>
+                <span><img src="image/mn6dbcs15y9zru0yjw45ly54mqsf.png" width="30" height="30" text-transform: capitalize;> ${name}</span>
                 <span><i class="fa-solid fa-trash delete_btn text-danger" onclick="deleteItem(event, '${name}')"></i></span>
             </div>`
         );
@@ -82,6 +83,7 @@ function thiredpage(){
 // Add an expense
 function addExpense() {
     const expenseAmount = document.getElementById("expenseAmount").value.trim();
+    const itemgrocery = document.getElementById("item_grocery").value.trim();
     const expenseslist = document.getElementById("expenses-list");
     const personSelect = document.getElementById("personSelect");
     const selectedPerson = personSelect.value;
@@ -105,7 +107,16 @@ function addExpense() {
 
     // Create expense text
     const expenseText = document.createElement("span");
-    expenseText.textContent = `${selectedPerson} spent $${amount.toFixed(2)}`;
+    // const itemgrocery = document.getElementById("item_grocery"); // Declare first
+
+    // expenseText.textContent = `${selectedPerson} spent $${amount.toFixed(2)} on ${itemgrocery}`;
+    expenseText.innerHTML = `
+    <span style="color: blue; font-weight: bold; text-transform: capitalize;">${selectedPerson}</span> 
+    spent 
+    <span style="color: red; font-weight: bold;">$${amount.toFixed(2)}</span> 
+    on 
+    <span style="color: green; font-style: italic; text-transform: capitalize;">${itemgrocery}</span>
+`;
 
     // Create delete icon
     const deleteIcon = document.createElement("i");
@@ -114,7 +125,7 @@ function addExpense() {
     deleteIcon.onclick = function () {
         expenseslist.removeChild(expenseWrapper);
         expensesPerPerson[selectedPerson] -= amount;
-        calculateExpenses();
+        // calculateExpenses();
     };
 
     // Append text and icon to wrapper
@@ -126,9 +137,13 @@ function addExpense() {
 
     // Clear input
     document.getElementById("expenseAmount").value = "";
+    document.getElementById("item_grocery").value = "";
 
     // Optional: update total
-    calculateExpenses();
+    // calculateExpenses();
+
+    grocery[itemgrocery] = expenseAmount;
+    console.log(grocery);
 }
 
 
@@ -183,8 +198,47 @@ function balance_sheet() {
         }
 
         balancesheet.appendChild(personDiv);
+
+
     }
+
+    const summaryDiv = document.getElementById("summaryDiv");
     
+    // 1. Header
+    const heading = document.createElement("pre");
+    heading.innerText = `
+    -----------------------------------------
+                 EXPENSE SUMMARY
+    -----------------------------------------
+    Items Purchased:
+    `;
+    summaryDiv.appendChild(heading);
+    
+    // 2. Itemized List
+    let count = 1;
+    for (let item in grocery) {
+        const line = document.createElement("pre");
+        line.textContent = `    ${count}. ${item.padEnd(17)} - $${grocery[item]}`;
+        summaryDiv.appendChild(line);
+        count++;
+    }
+        
+    const totals = document.createElement("pre");
+    totals.innerText = `
+    -----------------------------------------
+    Total Expense: $${totalAmount}
+    -----------------------------------------
+    Number of People: ${personCount}
+    Per Person Share: $${average}
+    -----------------------------------------
+    Balance Sheet:
+    `;
+    summaryDiv.appendChild(totals);
+    
+    // 4. Balance Sheet Table
+    const tableHeader = document.createElement("pre");
+    tableHeader.innerHTML = `   | Name     | Paid  | Balance     |\n   |----------|-------|-------------|`;
+    summaryDiv.appendChild(tableHeader);
 }
 
 
@@ -205,8 +259,8 @@ function backthird() {
 
 
 // Initial state
-document.getElementById("secondpage").style.display = "none";
-document.getElementById("thiredpage").style.display = "none";
+// document.getElementById("secondpage").style.display = "none";
+// document.getElementById("thiredpage").style.display = "none";
 
 // Event listeners
 document.querySelector(".btn-primary").addEventListener("click", addName);

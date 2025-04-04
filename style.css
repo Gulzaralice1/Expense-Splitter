@@ -97,3 +97,7 @@ button:hover {
         width: 1000px !important;
     }
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}
