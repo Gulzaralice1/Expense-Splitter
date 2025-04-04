@@ -259,8 +259,8 @@ function backthird() {
 
 
 // Initial state
-// document.getElementById("secondpage").style.display = "none";
-// document.getElementById("thiredpage").style.display = "none";
+document.getElementById("secondpage").style.display = "none";
+document.getElementById("thiredpage").style.display = "none";
 
 // Event listeners
 document.querySelector(".btn-primary").addEventListener("click", addName);
