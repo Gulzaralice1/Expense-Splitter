@@ -267,3 +267,7 @@ document.querySelector(".btn-primary").addEventListener("click", addName);
 document.getElementById("back").addEventListener("click", back);
 
 
+console.log(names);
+console.log(deletednames);
+console.log(expensesPerPerson);
+console.log(grocery);
